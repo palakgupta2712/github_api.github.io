@@ -2,6 +2,7 @@ let name  = document.getElementById('user_name');
 function find() {
     document.getElementById("element").style.display = "block";
  let new1 = "https://api.github.com/users/".concat(name.value);
+ let gist_url_new = "https://api.github.com/users/".concat(name.value)+"/gists";
 //  alert(new1);
 
  fetch(new1)
@@ -37,7 +38,7 @@ function find() {
         
         
         // let a = `<span>REPOS</span> ${data.public_repos};
-            
+        let gists_url = data.gists_url;
         let repos_url = data.repos_url;     
 
         fetch(repos_url) 
@@ -78,8 +79,46 @@ function find() {
             }); 
        
         // Display result 
-        document.getElementById("inbox").innerHTML = li; 
+        document.getElementById("repo").innerHTML = li; 
     }); 
+
+    
+       
+
+    fetch(gist_url_new ) 
+    // Converting received data to JSON 
+    .then(response => response.json()) 
+    .then(json => { 
+        
+        
+        // Create a variable to store HTML 
+        let li = ``; 
+        
+        // Loop through each data and add a table row 
+        json.forEach(gists => { 
+           
+            let d = new Date(gists.created_at);
+            li += `<div class="row">
+                    <div class="col s12 ">
+                      <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <a href="${gists.html_url}" class="card-title mono" style="text-decoration: none; color:white">${gists.id}</a>
+                                                    
+                        </div>
+                        <div class="card-action">
+                          <a class="sans" >Created On: ${d.toDateString()}</a>
+                          <a class="sans"> Comments : ${gists.comments}</a>
+                        
+                        </div>
+                      </div>
+                    </div>
+                  </div>`; 
+        }); 
+   
+    // Display result 
+    document.getElementById("gists").innerHTML = li; 
+}); 
+
 
     }).catch((error) => {
        alert(error);
