@@ -18,6 +18,12 @@
           .flex { display: inline-flex; }
           .mono { font-family: 'Roboto Mono', monospace; }  
           .sans { font-family: 'Roboto', sans-serif;}
+          /* @media screen and (max-width: 480px) {
+            .flex {
+               display: flex;
+            }
+} */
+
       </style>
    </head>  
      
@@ -43,11 +49,11 @@
         </div>
             
         <div class="row" id="element" style="display: none;" > 
-            <div class="col s4">
+            <div class="col s12 m6 l4 ">
                 <a id="picture_url" href=""><img src="" id="picture" style="border-radius: 50%; width: 200px; height: 200px;"/></a>
             </div> 
           
-            <div class="col s8">
+            <div class="col s12 m6 l8">
                 <a id="profile_url" href=""><h3><div id="name" style="text-decoration: none; color:black"></div></h3></a>
         
                 <div class="flex">
@@ -83,11 +89,7 @@
                     <li class="tab col s3" id="repos"><a href="#unread">Gists</a></li>   
                 </ul>  
             </div>  
-            <div class="col s12">
-                    <!-- <div id="name"></div>
-                    <div id="followers"></div>
-                    <div id="following"></div> -->
-                <div id="location"></div>
+            
               
             </div>  
             <div id="inbox" class="col s12"></div> 
