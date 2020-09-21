@@ -1,4 +1,12 @@
-let name  = document.getElementById('user_name');
+let name = document.getElementById('user_name');
+
+function sort_date_desc(a,b) {
+    let date1 = new Date(a.updated_at)
+    let date2 = new Date(b.updated_at)
+    if (date1 > date2) return -1;
+    if (date1 < date2) return 1;
+    return 0;
+}
 function find() {
     document.getElementById("element").style.display = "block";
  let new1 = "https://api.github.com/users/".concat(name.value);
@@ -44,8 +52,10 @@ function find() {
         fetch(repos_url) 
         // Converting received data to JSON 
         .then(response => response.json()) 
-        .then(json => { 
-            
+        .then(json => {
+
+          // sort repos by last updated date
+          json.sort(sort_date_desc(a,b))
             
             // Create a variable to store HTML 
             let li = ``; 
@@ -59,7 +69,7 @@ function find() {
                     content = repos.description;
                 }
 
-                let d = new Date(repos.created_at);
+                let d = new Date(repos.updated_at);
                 li += `<div class="row">
                         <div class="col s12 ">
                           <div class="card blue-grey darken-1">
@@ -71,7 +81,7 @@ function find() {
                             <div class="card-action">
                               <a class="sans"> Language : ${repos.language}</a>
                             
-                              <a class="sans" >Created On: ${d.toDateString()}</a>
+                              <a class="sans" >Last Updated On: ${d.toDateString()}</a>
                             </div>
                           </div>
                         </div>
@@ -90,14 +100,14 @@ function find() {
     .then(response => response.json()) 
     .then(json => { 
         
-        
+        json.sort(sort_date_desc(a,b))
         // Create a variable to store HTML 
         let li = ``; 
         
         // Loop through each data and add a table row 
         json.forEach(gists => { 
            
-            let d = new Date(gists.created_at);
+            let d = new Date(gists.updated_at);
             li += `<div class="row">
                     <div class="col s12 ">
                       <div class="card blue-grey darken-1">
@@ -106,9 +116,8 @@ function find() {
                                                     
                         </div>
                         <div class="card-action">
-                          <a class="sans" >Created On: ${d.toDateString()}</a>
+                          <a class="sans" >Last Updated On: ${d.toDateString()}</a>
                           <a class="sans"> Comments : ${gists.comments}</a>
-                        
                         </div>
                       </div>
                     </div>
