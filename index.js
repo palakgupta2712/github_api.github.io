@@ -13,6 +13,8 @@ function find() {
         document.getElementById('followers').innerHTML = data.followers;
         document.getElementById('following').innerHTML = data.following;
         document.getElementById('location').innerHTML = data.location;
+        document.getElementById('public_repos').innerHTML = data.public_repos;
+        document.getElementById('public_gists').innerHTML = data.public_gists;
         document.getElementById('date').innerHTML = user_date.toLocaleDateString();
         
         // document.getElementById('avatar_url').innerHTML = data.avatar_url;
