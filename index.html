@@ -1,0 +1,102 @@
+<!DOCTYPE html>  
+<html>  
+   <head>  
+      <title>Profile Search</title>  
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">        
+      <link rel = "stylesheet"  
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">  
+      <link rel = "stylesheet"   
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">  
+      <script type = "text/javascript"  
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>             
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">  
+      </script> 
+      <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      <style>
+          .material-icons.md-18 { font-size: 14px; }
+          .flex { display: inline-flex; }
+          .mono { font-family: 'Roboto Mono', monospace; }  
+          .sans { font-family: 'Roboto', sans-serif;}
+      </style>
+   </head>  
+     
+   <body class = "container" style="padding: 50px;">   
+        <h3>Profiles</h3>  
+        <br>
+        
+        <!-- Search Bar -->
+        <div class="row center-align">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="palakgupta2712" id="user_name" type="text" class="validate">
+                        <label >User Name</label>
+                    </div>
+                    <div class="col s12">
+                        <button type="button" class="btn btn-primary" id="button" onclick="find()">Search</button>
+
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+            
+        <div class="row" id="element" style="display: none;" > 
+            <div class="col s4">
+                <a id="picture_url" href=""><img src="" id="picture" style="border-radius: 50%; width: 200px; height: 200px;"/></a>
+            </div> 
+          
+            <div class="col s8">
+                <a id="profile_url" href=""><h3><div id="name" style="text-decoration: none; color:black"></div></h3></a>
+        
+                <div class="flex">
+                    <i class="material-icons md-18" style="margin-top: 5px; color: grey;">alternate_email</i>
+                    <strong><div id="login"></div></strong>
+                </div>
+
+                <br>
+
+                <div class="flex">
+                    <strong><div id="following" ></div></strong>
+                    <div style="margin: 0px 8px; color: grey;">Followings</div>
+                    <strong><div id="followers" ></div></strong>
+                    <div style="margin: 0px 8px; color: grey;">Followers</div>
+                </div>
+                <br>
+                <div class="flex" style = "color: grey;">
+                    <i class="material-icons md-18" style="margin-top: 4px; margin-left: -3px; ">place</i>
+                    <div id="location" style="margin: 0px 7px;"></div>
+                </div>
+                <br>
+                <div class="flex" style = "color: grey;">
+                    <i class="material-icons md-18" style="margin-top: 4px; margin-left: -3px; ">date_range</i>
+                    <div id="date" style="margin: 0px 7px;"></div>
+                </div>
+                
+            </div>
+           <br>
+            <div class="col s12">  
+                <ul class="tabs">  
+                    <li class="tab col s3"><a class="active" href="#inbox">Repositories</a>
+                    </li>  
+                    <li class="tab col s3" id="repos"><a href="#unread">Gists</a></li>   
+                </ul>  
+            </div>  
+            <div class="col s12">
+                    <!-- <div id="name"></div>
+                    <div id="followers"></div>
+                    <div id="following"></div> -->
+                <div id="location"></div>
+              
+            </div>  
+            <div id="inbox" class="col s12"></div> 
+            <div id="unread" class="col s12">Unread </div>  
+        </div> 
+  
+<!-- Link JavaScript file -->
+<script src="index.js">
+
+</script> 
+</body>  
+</html>  
