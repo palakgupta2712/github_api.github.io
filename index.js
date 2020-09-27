@@ -7,6 +7,12 @@ function sort_date_desc(a,b) {
     if (date1 < date2) return 1;
     return 0;
 }
+
+// Alternative to sort_date_desc 
+// function sort_date_desc(a,b) {
+//   return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+// }
+
 function find() {
     document.getElementById("element").style.display = "block";
  let new1 = "https://api.github.com/users/".concat(name.value);
@@ -46,7 +52,6 @@ function find() {
         
         
         // let a = `<span>REPOS</span> ${data.public_repos};
-        let gists_url = data.gists_url;
         let repos_url = data.repos_url;     
 
         fetch(repos_url) 
@@ -55,7 +60,7 @@ function find() {
         .then(json => {
 
           // sort repos by last updated date
-          json.sort(sort_date_desc(a,b))
+          json.sort(sort_date_desc)
             
             // Create a variable to store HTML 
             let li = ``; 
@@ -100,7 +105,7 @@ function find() {
     .then(response => response.json()) 
     .then(json => { 
         
-        json.sort(sort_date_desc(a,b))
+        json.sort(sort_date_desc)
         // Create a variable to store HTML 
         let li = ``; 
         
